@@ -15,23 +15,25 @@ const morgan = require('morgan');
 
 // unless otherwise defined, port === `3000`
 const PORT = process.env.PORT ? process.env.PORT : '3000';
+
+// Middleware
 // convert request body to JS
 app.use(express.urlencoded({ extended: false}));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 // Public Routes
-// Reach the landing page
+// HOME route
 app.get('/', async (req, res) => {
     res.render('index.ejs');
 });
 
-// Players Index Route
+// INDEX route
 app.get('/players', async (req, res) => {
     allPlayers = await Player.find();
     res.render("players/index.ejs", { players: allPlayers });
 });
-// Render new player form page
+// NEW route
 app.get('/players/new', async (req, res) => {
     res.render('players/new.ejs');
 });
