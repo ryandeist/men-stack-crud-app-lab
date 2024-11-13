@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile</title>
+</head>
+
+<body>
+    <h1>
+        <%= `${player.name}'s Player Profile` %>
+    </h1>
+    <p>
+    <ul>
+        <li>Name: <%= player.name %>
+        </li>
+        <li>Position: <%= player.position %>
+        </li>
+        <li>League Experience: <%= `${player.yearsActive} years in the NFL, ${player.yearsWithJets} with the Jets` %>
+        </li>
+        <li>Inducted to the HoF in <%= player.yearInducted %>
+        </li>
+    </ul>
+    </p>
+    <% if (player.retiredAJet) { %>
+        <p>
+            <%=`${player.name} retired as a Jet!` %>
+        </p>
+        <% } else { %>
+            <p>
+                <%= `${player.name} was better known on other teams` %>
+            </p>
+            <% } %>
+                <a href="/players">Back to Players</a>
+</body>
+
+</html>

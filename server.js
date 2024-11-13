@@ -29,6 +29,12 @@ app.get('/players/new', async (req, res) => {
     res.render('players/new.ejs');
 });
 
+// SHOW route
+app.get('/players/:playerId', async (req, res) => {
+    const singlePlayer = await Player.findById(req.params.playerId);
+    res.render("players/show.ejs", {player: singlePlayer});
+});
+
 // CREATE route
 app.post('/players', async (req, res) => {
     if (req.body.retiredAJet === "on") {
