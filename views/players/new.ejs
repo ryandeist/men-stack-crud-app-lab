@@ -12,11 +12,12 @@
     <form action="/players" method="POST">
         <div>
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" required />
         </div>
         <div>
             <label for="position">Position:</label>
-            <select id="position">
+            <select id="position" required >
+                <option value="">Select a Position</option>
                 <option value="QB">Quarterback</option>
                 <option value="HB">Halfback</option>
                 <option value="WR">Wide Receiver</option>
@@ -31,24 +32,28 @@
             </select>
         </div>
             <label for="yearsActive">Years Active:</label>
-            <input type="number" name="yearsActive" id="yearsActive">
+            <input type="number" name="yearsActive" id="yearsActive" required >
         <div>
             <label for="yearsWithJets">Years with Jets:</label>
-            <input type="number" name="yearsWithJets" id="yearsWithJets">
+            <input type="number" name="yearsWithJets" id="yearsWithJets" required >
         </div>
         <div>
             <label for="proBowls">Number of Pro Bowls:</label>
-            <input type="number" name="proBowls" id="proBowls">
+            <input type="number" name="proBowls" id="proBowls" required >
         </div>
         <div>
             <label for="yearInducted">Year Inducted:</label>
-            <input type="number" name="yearInducted" id="yearInducted">
+            <input type="number" name="yearInducted" id="yearInducted" required >
         </div>
         <div>
             <label for="retiredAJet">Retired a Jet?:</label>
             <input type="checkbox" name="retiredAJet" id="retiredAJet">
         </div>
+
+        <button type="submit">Add Player</button>
     </form>
+
+    <a href="/">Back to Home</a>
 </body>
 
 </html>

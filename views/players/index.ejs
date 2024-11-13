@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Players</title>
+</head>
+<body>
+    <h1>All Players</h1>
+    <ul>
+        <% players.forEach(player => { %>
+            <li><a href="/players/<%= player._id %>"><%= `${player.name}, ${player.position}` %></a></a></li>
+        <% }); %>
+    </ul>
+    <a href="/players/new">Add New Player</a>
+    <a href="/">Back to Home</a>
+</body>
+</html>

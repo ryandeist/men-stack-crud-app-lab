@@ -4,12 +4,15 @@ require('dotenv').config();
 require('./config/database');
 // require express
 const express = require('express');
-const Fruit = require('./models/player.js');
-
+//import player model
+const Player = require('./models/player');
 // initialize express
 const app = express();
+
 // unless otherwise defined, port === `3000`
 const PORT = process.env.PORT ? process.env.PORT : '3000';
+// convert request body to JS
+app.use(express.urlencoded({ extended: false}));
 
 // Public Routes
 // Reach the landing page
@@ -17,9 +20,24 @@ app.get('/', async (req, res) => {
     res.render('index.ejs');
 });
 
-// Create Route
+app.get('/players', async (req, res) => {
+    allPlayers = await Player.find();
+    res.render("players/index.ejs", { players: allPlayers });
+});
+// Render new player form page
 app.get('/players/new', async (req, res) => {
     res.render('players/new.ejs');
+});
+
+// CREATE route
+app.post('/players', async (req, res) => {
+    if (req.body.retiredAJet === "on") {
+        req.body.retiredAJet = true;
+    } else {
+        req.body.retiredAJet = false;
+    }
+    await Player.create(req.body);
+    res.redirect('/players');
 });
 
 app.listen(PORT, () => {

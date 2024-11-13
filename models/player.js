@@ -13,3 +13,5 @@ const playerSchema = new mongoose.Schema({
 
 // create the model
 const Player = mongoose.model("Player", playerSchema); 
+
+module.exports = Player;
