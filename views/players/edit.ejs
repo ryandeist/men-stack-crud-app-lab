@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Player</title>
+</head>
+
+<body>
+    <h1>Edit <%= player.name %>'s information:</h1>
+    <form action="/players/<%=player._id%>?_method=PUT" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="<%= player.name %>" required />
+        </div>
+        <div>
+            <label for="position">Position:</label>
+            <select name="position" value="<%= player.position %>" required >
+                <option value="">Select a Position</option>
+                <option value="QB">Quarterback</option>
+                <option value="HB">Halfback</option>
+                <option value="WR">Wide Receiver</option>
+                <option value="TE">Tight End</option>
+                <option value="OL">Offensive Lineman</option>
+                <option value="DL">Defensive Lineman</option>
+                <option value="LB">Linebacker</option>
+                <option value="CB">Cornerback</option>
+                <option value="S">Safety</option>
+                <option value="K">Kicker</option>
+                <option value="P">Punter</option>
+            </select>
+        </div>
+            <label for="yearsActive">Years Active:</label>
+            <input type="number" name="yearsActive" value="<%= player.yearsActive %>" required />
+        <div>
+            <label for="yearsWithJets">Years with Jets:</label>
+            <input type="number" name="yearsWithJets" value="<%= player.yearsWithJets %>" required />
+        </div>
+        <div>
+            <label for="proBowls">Number of Pro Bowls:</label>
+            <input type="number" name="proBowls" value="<%= player.proBowls %>" required />
+        </div>
+        <div>
+            <label for="yearInducted">Year Inducted:</label>
+            <input type="number" name="yearInducted" value="<%= player.yearInducted %>" required />
+        </div>
+        <div>
+            <label for="retiredAJet">Retired a Jet?:</label>
+            <input type="checkbox" name="retiredAJet" <% if (player.retiredAJet) { %>checked<% } %> />
+        </div>
+
+        <button type="submit">Update Player</button>
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+
+</html>
